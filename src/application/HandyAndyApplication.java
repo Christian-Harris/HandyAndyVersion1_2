@@ -3,8 +3,6 @@ package application;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.ResultSet;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -12,8 +10,6 @@ import javafx.scene.Scene;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.stage.WindowEvent;
-
-//import org.apache.pdfbox.pdmodel.PDDocument;
 
 import menu.LoginMenu;
 import user.User;
@@ -42,8 +38,9 @@ public class HandyAndyApplication extends Application{
             System.out.println(ex);
         }
         
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>(){
-            public void handle(WindowEvent e){
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent e) {
                 try{
                     DatabaseConnection.close();
                     System.out.println("Disconnected from database.");
@@ -51,8 +48,8 @@ public class HandyAndyApplication extends Application{
                 catch(SQLException ex){
                     System.out.println(ex);
                 }
-		Platform.exit();
-		System.exit(0);
+                Platform.exit();
+                System.exit(0);
             }
         });
         
@@ -61,6 +58,10 @@ public class HandyAndyApplication extends Application{
         stage.setScene(scene);
         stage.setTitle("HandyAndyApplication");
         stage.show();
+    }
+    
+    public void setCurrentUser(User user){
+        this.currentUser = user;
     }
     
     public static void main(String[] args){
