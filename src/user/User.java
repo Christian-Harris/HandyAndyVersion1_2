@@ -1,6 +1,7 @@
 package user;
 
-import user.UserType;
+
+import hash.PasswordHash;
 
 /**
  *
@@ -14,17 +15,13 @@ public class User {
     
     public User(String username, String password, UserType userType){
         this.username = username;
-        this.password = User.hashPassword(password);
+        this.password = PasswordHash.passwordHash(password);
         this.userType = userType;
     }
     
     public User(String username, String password, String email, UserType userType){
         this(username, password, userType);
         this.email = email;
-    }
-    
-    private static String hashPassword(String password){ //Requires more robust implementation.
-        return Integer.toString(password.hashCode());
     }
     
     public void setUsername(String username){} //Requires implementation.
@@ -45,6 +42,14 @@ public class User {
     
     public UserType getUserType(){
         return this.userType;
+    }
+    
+    public void setEmail(String email){
+        this.email = email;
+    }
+    
+    public String getEmail(){
+        return this.email;
     }
     
     
