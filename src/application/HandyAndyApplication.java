@@ -64,6 +64,18 @@ public class HandyAndyApplication extends Application{
         this.currentUser = user;
     }
     
+    public static String getApplicationUser(){
+        return HandyAndyApplication.APP_USER;
+    }
+    
+    public static String getApplicationPassword(){
+        return HandyAndyApplication.APP_PSWD;
+    }
+    
+    public static String getConnectionString(){
+        return HandyAndyApplication.CONN_STR;
+    }
+    
     public static void main(String[] args){
         launch(args);
     }
